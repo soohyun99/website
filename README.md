@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
 <img src="https://github.com/AnalyticalGraphicsInc/cesium/wiki/logos/Cesium_Logo_Color.jpg" width="50%" />
 </p>
@@ -60,3 +61,6 @@ Using Cesium ion helps support CesiumJS development. :heart:
 <br/>
 </p>
 <h4><a href="https://cesium.com/blog/categories/userstories">See all demos</a></h4>
+=======
+# Website
+>>>>>>> 384146b7f90ff34870d4e5b70a1402b289d0a2a7
