@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset="UTF-8">
+<head>
+    <!-- D:\DSC\planetEarth\Cesium\Apps\example1.html -->
+<script src="https://cesiumjs.org/releases/1.53/Build/Cesium/Cesium.js"></script>
+<link href="https://cesiumjs.org/releases/1.53/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+<style>
+    @import url(js/Cesium-1.54/Apps/Sandcastle/templates/bucket.css);
+</style>
+<div id="cesiumContainer" style="width:auto; height:700px;"></div>
+<script>
+
+var key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzYjFlYjlhNC01YmFjLTQxODYtYWQwMi05N2M1Mzk0ZjQzZDEiLCJpZCI6MjMxNDEsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1ODI3ODA5NTZ9.d1n6LqzdAu0NyD48VWy9ZSa15ra_mqlmF4lrb5aOIEU";
+Cesium.Ion.defaultAccessToken = key;
+
+var extent = Cesium.Rectangle.fromDegrees(117.896284, 31.499028, 139.597380, 43.311528);
+ 
+Cesium.Camera.DEFAULT_VIEW_RECTANGLE = extent;
+Cesium.Camera.DEFAULT_VIEW_FACTOR = 0;
+
+
+ 
+var viewer = new Cesium.Viewer('cesiumContainer', {
+     timeline : false,
+     animation : false,
+     selectionIndicator : false,
+    //  navigationHelpButton : false,
+    //  infoBox : false,
+    //  navigationInstructionsInitiallyVisible : false   
+});
+
+var iframe = document.getElementsByClassName('cesium-infoBox-iframe')[0];
+iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms'); 
+
+var pinBuilder = new Cesium.PinBuilder();
+
+var bluePin = viewer.entities.add({
+    name : 'Korea',
+    description: '\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">1. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">2. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">3. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">4. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">5. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">6. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">7. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">8. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">9. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">10. Wikpedia</a>\
+                </p>',
+    position : Cesium.Cartesian3.fromDegrees(127.0016985, 37.564214),
+    billboard : {
+        image : pinBuilder.fromColor(Cesium.Color.ROYALBLUE, 48).toDataURL(),
+        verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+    }
+});
+
+var questionPin = viewer.entities.add({
+    name : 'Japan',
+    position : Cesium.Cartesian3.fromDegrees(139.46, 35.41),
+    description: '\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">1. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">2. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">3. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">4. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">5. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">6. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">7. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">8. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">9. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">10. Wikpedia</a>\
+                </p>',
+    billboard : {
+        image : pinBuilder.fromText('?', Cesium.Color.BLACK, 48).toDataURL(),
+        verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+    }
+});
+
+var questionPin = viewer.entities.add({
+    name : 'China',
+    position : Cesium.Cartesian3.fromDegrees(116.388, 39.9035),
+    description: '\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">1. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">2. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">3. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">4. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">5. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">6. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">7. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">8. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">9. Wikpedia</a>\
+                </p>\
+                <p>\
+                <a style="color: WHITE"\
+                    target="_blank"\
+                    href="http://en.wikipedia.org/wiki/Wyoming">10. Wikpedia</a>\
+                </p>',
+    billboard : {
+        image : pinBuilder.fromText('?', Cesium.Color.RED, 48).toDataURL(),
+        verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+    }
+});
+
+//  var url = Cesium.buildModuleUrl('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/338px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+// 'Assets/Textures/maki/china.png'
+// var groceryPin = Cesium.when(pinBuilder.fromUrl(url, Cesium.Color.RED, 48), function(canvas) {
+//     return viewer.entities.add({
+//         name : 'Grocery store',
+//         position : Cesium.Cartesian3.fromDegrees(116.388, 39.9035),
+//         billboard : {
+//             image : canvas.toDataURL(),
+//             verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+//         }
+//     });
+// });
+
+//Create a red pin representing a hospital from the maki icon set.
+// var hospitalPin = Cesium.when(pinBuilder.fromMakiIconId('hospital', Cesium.Color.RED, 48), function(canvas) {
+//     return viewer.entities.add({
+//         name : 'Hospital',
+//         position : Cesium.Cartesian3.fromDegrees(-75.1698606, 39.9211275),
+//         billboard : {
+//             image : canvas.toDataURL(),
+//             verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+//         }
+//     });
+// });
+
+//Since some of the pins are created asynchronously, wait for them all to load before zooming/
+Cesium.when.all([bluePin, questionPin, groceryPin, hospitalPin], function(pins){
+    viewer.zoomTo(pins);
+});
+
+</script>
+</head>
+<body>
+</body>
+</html>
